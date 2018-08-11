@@ -1,0 +1,19 @@
+{
+  "name": "billcookecreative",
+  "author": "BC Innovations LLC",
+  "version": "1.0.0",
+  "description": "Bill Cooke Creative Website",
+  "dependencies": {
+    "jssor-slider": "^23.0.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-header": "^1.8.8",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2"
+  },
+  "license": "MIT"
+}
