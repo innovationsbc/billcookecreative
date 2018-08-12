@@ -57,6 +57,6 @@ public class MailConfig {
         mailSender.setProtocol(protocol);
         mailSender.setUsername(username);
         mailSender.setPassword(password);
-        return mailSender;
+        return mailSender;        
     }
 }

@@ -3,6 +3,7 @@ package com.bcc.controller;
 import java.nio.charset.StandardCharsets;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -48,7 +49,7 @@ public class MainController {
         captchaService.processResponse(response);
 
         try {
-        		mailSender.send(constructWelcome(userForm));
+        		//mailSender.send(constructWelcome(userForm));
         		mailSender.send(constructContact(userForm));
         } catch(Exception ex) {
         		System.out.println(ex.getMessage());
@@ -71,21 +72,29 @@ public class MainController {
 	
 	private MimeMessage constructEmail(String subject, String body, String to) throws Exception {
 		
-		MimeMessage message = mailSender.createMimeMessage();	      
+		MimeMessage message = mailSender.createMimeMessage();	
 	    MimeMessageHelper email;
 		try {			
 			email = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
 	        email.setSubject(subject);
-	        email.setTo(to);	        
-	        email.setFrom(env.getProperty("support.email"));
+	        email.setTo(to);
+	        InternetAddress ia = new InternetAddress("noreply@billcookecreative.com");
+	        email.setFrom(ia);
+	        System.out.println(message.getFrom());
+	        message.setFrom(ia);
+	        email.setBcc(env.getProperty("support.bccemail"));
 	        email.setText(body, true);
-	        	        
+	        
 	        // Add logos
 	        email.addInline("fullsize.png", new ClassPathResource("/static/app/images/fullsize.png"));
 	        email.addInline("facebook_logo.png", new ClassPathResource("/static/app/images/facebook_logo.png"));
 	        email.addInline("instagram_logo.png", new ClassPathResource("/static/app/images/instagram_logo.png"));	        
 	        
 		} catch (MessagingException e) {
+			System.out.println(e.getMessage());
+			throw new Exception("Message could not be sent");
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 			throw new Exception("Message could not be sent");
 		}
         

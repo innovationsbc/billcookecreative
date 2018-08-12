@@ -3,12 +3,15 @@ package com.bcc.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.bcc.validation.ValidEmail;
+
 public class ContactDto {
 	
 	@NotNull
     @Size(min = 1, max=255)
 	public String name;
 	
+	@ValidEmail
 	@NotNull
     @Size(min = 1, max=255)
 	public String email;

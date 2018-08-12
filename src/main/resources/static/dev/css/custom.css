@@ -551,6 +551,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 600;
   margin-bottom: 15px;
 }
+#contact .form #spinner {
+  display: none;
+  font-size: 35px;
+  text-align: center;
+}
 #contact .form #sendmessage.show,
 #contact .form #errormessage.show,
 #contact .form .show {

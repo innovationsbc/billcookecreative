@@ -1,5 +1,6 @@
 var onContactSubmit = function(response) {
 
+  $("#spinner").show();
   $("#nameError").hide().html("");
   $("#emailError").hide().html("");
   $("#subjectError").hide().html("");
@@ -19,11 +20,16 @@ var onContactSubmit = function(response) {
 
   var formData = $('form').serialize();
   $.post(serverContext + "contact", formData, function(data) {
-    if(data.message == "success"){
+    $("#spinner").hide();
+    if(data.message == "success") {
         $("#sendmessage").show();
+    }
+    else {
+      $("#errormessage").show().html(data.error);
     }
   })
   .fail(function(data) {
+    $("#spinner").hide();
     grecaptcha.reset();
     if(data.responseJSON.error == "Bad Request")
     {
