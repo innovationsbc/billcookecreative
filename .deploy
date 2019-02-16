@@ -1,0 +1,5 @@
+scp -i /home/nburfield/.ssh/id_rsa.pub -r css bci@45.33.47.96:/home/bci/staging/billcookecreative/
+scp -i /home/nburfield/.ssh/id_rsa.pub -r js bci@45.33.47.96:/home/bci/staging/billcookecreative/
+scp -i /home/nburfield/.ssh/id_rsa.pub -r images bci@45.33.47.96:/home/bci/staging/billcookecreative/
+scp -i /home/nburfield/.ssh/id_rsa.pub -r email bci@45.33.47.96:/home/bci/staging/billcookecreative/
+scp -i /home/nburfield/.ssh/id_rsa.pub index.html bci@45.33.47.96:/home/bci/staging/billcookecreative/

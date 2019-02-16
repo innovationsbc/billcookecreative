@@ -1,3 +1,7 @@
+$("#submitContactForm").submit(function() {
+  onContactSubmit();
+});
+
 var onContactSubmit = function(response) {
 
   $("#spinner").show();
@@ -19,28 +23,74 @@ var onContactSubmit = function(response) {
   }
 
   var formData = $('form').serialize();
-  $.post(serverContext + "contact", formData, function(data) {
-    $("#spinner").hide();
-    if(data.message == "success") {
-        $("#sendmessage").show();
+  // $.post(serverContext + "contact", formData, function(data) {
+  //   $("#spinner").hide();
+  //   if(data.message == "success") {
+  //       $("#sendmessage").show();
+  //   }
+  //   else {
+  //     $("#errormessage").show().html(data.error);
+  //   }
+  // })
+  // .fail(function(data) {
+  //   $("#spinner").hide();
+  //   grecaptcha.reset();
+  //   console.log(data)
+  //   if(data.responseJSON.error == "Bad Request")
+  //   {
+  //     $("#errormessage").show().html("Form Error");
+  //     $.each(data.responseJSON.errors, function(index, item) {
+  //       $("#"+item.field+"Error").show().html(item.defaultMessage);
+  //     });
+  //   }
+  //   else 
+  //   {
+  //     $("#errormessage").show().html(data.responseJSON.message);
+  //   }
+  // });
+
+
+  $.ajax({
+    type: 'POST',
+    url: serverContext + "contact",
+    data: formData,
+    dataType: 'json',
+    success: function(data, textStatus, jqXHR) {
+      $("#spinner").hide();
+      if(data.message == "success") {
+          $("#sendmessage").show();
+      }
+      else {
+        $("#errormessage").show().html(data.message);
+      }
+    },
+    error: function (data, textStatus, errorThrown) {
+      $("#spinner").hide();
+      grecaptcha.reset();
+      console.log(data)
+      if(data.status == 500)
+      {
+        $("#errormessage").show().html("Internal Server Error");
+      }
+      if(data.responseJSON != null)
+      {
+        if(data.responseJSON.error == "Bad Request")
+        {
+          $("#errormessage").show().html("Form Error");
+          $.each(data.responseJSON.errors, function(index, item) {
+            $("#"+item.field+"Error").show().html(item.defaultMessage);
+          });
+        }
+        else 
+        {
+          $("#errormessage").show().html(data.responseJSON.message);
+        }
+      }
+      else
+      {
+        $("#errormessage").show().html("Server Error");
+      }
     }
-    else {
-      $("#errormessage").show().html(data.error);
-    }
-  })
-  .fail(function(data) {
-    $("#spinner").hide();
-    grecaptcha.reset();
-    if(data.responseJSON.error == "Bad Request")
-    {
-      $("#errormessage").show().html("Form Error");
-      $.each(data.responseJSON.errors, function(index, item) {
-        $("#"+item.field+"Error").show().html(item.defaultMessage);
-      });
-    }
-    else 
-    {
-      $("#errormessage").show().html(data.responseJSON.message);
-    }      
-  });  
+  });
+
 }

@@ -1,4 +1,5 @@
 var gulp            = require('gulp');
+var proxyMiddleware = require('http-proxy-middleware');
 var browserSync     = require('browser-sync').create();
 var less            = require('gulp-less');
 var header          = require('gulp-header');
@@ -52,7 +53,7 @@ gulp.task('minify-js', function() {
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
-
+    //var proxy = proxyMiddleware('./', {target: 'http://localhost:5000/'});
     browserSync.init({
         server: {
             baseDir: './'
