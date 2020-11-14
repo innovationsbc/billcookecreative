@@ -1,0 +1,32 @@
+I would like a site rebuilt in Wordpress built with the Divi theme. 
+
+The site currently exists with the URL https://billcookecreative.com/
+
+I am requesting that a site be created with 5 pages. The concept and copy can be pulled from the current existing site.
+
+
+Overall concept of the site
+  This company is selling their custom fish creations. These fish are carved from wood, painted, and glossed to look as realistic as possible. This is a very niche art to target outdoor enthusiasts that have money to spend on a carving.
+
+  The current site is a single page site that I would like broken out to different pages.
+
+
+Page specifics
+  
+  Home
+    A general home page with the copy that exists and images. Use the current page for suggestions.
+
+  About
+    A general about page with the copy that exists and images. Use the current about section page for suggestions. This will be an About the Artist (Bill Cooke) page.
+
+  Gallery
+    This is going to be an image gallery to show off the fish carvings. The current website has 14 images of the work. Please use all 14 images. On this page I would like just the image and a title for the image. 
+
+  Art Piece Details
+    When a visitor clicks on the description of an Image I would like them to go to a page that is the details of the Fish Carving they clicked. This should have the image, title, and description of the art piece.
+
+  Contact
+    A general contact page with a form. There is no business address, just the contact form and an email.
+
+
+The images that are on the site are attached.
