@@ -7,7 +7,7 @@
     "jssor-slider": "^27.5.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-header": "^2.0.7",
